@@ -72,4 +72,4 @@ python main.py
 3. **Teclado Numérico:** Durante o jogo, digite o número correspondente ao ingrediente desejado e pressione ENTER para adicioná-lo à caldeira, ou 0 para abandonar a poção.
 
 # Video de Apresentação
-[Vídeo Apresentação da Entrega 3 - Programação Dinâmica]()
+[Vídeo Apresentação da Entrega 3 - Programação Dinâmica](https://youtu.be/pIZi7iWHHyk)
