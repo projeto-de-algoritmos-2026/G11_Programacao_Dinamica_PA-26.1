@@ -81,7 +81,6 @@ class CaldeiraJogo:
                 time.sleep(0.2)
 
     def obter_nome_por_peso(self, peso):
-        """Retorna o nome do ingrediente baseado no seu peso mágico"""
         for nome, p in self.ingredientes.items():
             if p == peso:
                 return nome
@@ -115,7 +114,6 @@ class CaldeiraJogo:
             
         print("\n Solução Perfeita Prevista pelo Sistema (PD):")
         if solucao_perfeita is not None:
-            # Converte os pesos ideais de volta para os nomes comerciais
             for peso in pesos_ideais:
                 nome_ideal = self.obter_nome_por_peso(peso)
                 print(f"  ✔ {nome_ideal} (+{peso}kg)")
@@ -152,7 +150,7 @@ class CaldeiraJogo:
 
             self.peso_atual += peso_escolhido
             self.movimentos_jogador += 1
-            self.historico_jogador.append(nome_escolhido)  # Registra no histórico
+            self.historico_jogador.append(nome_escolhido)
 
             self.animar_caldeirao()
 
