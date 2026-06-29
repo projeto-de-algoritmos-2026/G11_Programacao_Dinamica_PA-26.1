@@ -17,7 +17,7 @@ class CaldeiraJogo:
         self.peso_alvo = 0
         self.peso_atual = 0
         self.movimentos_jogador = 0
-        self.historico_jogador = []  # Guarda os nomes dos ingredientes que o jogador usou
+        self.historico_jogador = []
 
     def iniciar_novo_nivel(self):
         self.peso_alvo = random.randint(20, 50)
@@ -128,7 +128,6 @@ class CaldeiraJogo:
         self.iniciar_novo_nivel()
         valores_ingredientes = list(self.ingredientes.values())
         
-        # Agora recebe a quantidade mínima E os pesos que compõem a resposta
         solucao_perfeita, pesos_ideais = calcular_minimo_ingredientes(valores_ingredientes, self.peso_alvo)
 
         while self.peso_atual < self.peso_alvo:
@@ -147,7 +146,6 @@ class CaldeiraJogo:
                 time.sleep(1.5)
                 continue
 
-            # Processa a escolha
             chaves = list(self.ingredientes.keys())
             nome_escolhido = chaves[int(opcao) - 1]
             peso_escolhido = self.ingredientes[nome_escolhido]
@@ -156,10 +154,8 @@ class CaldeiraJogo:
             self.movimentos_jogador += 1
             self.historico_jogador.append(nome_escolhido)  # Registra no histórico
 
-            # Roda a animação do frasco
             self.animar_caldeirao()
 
-            # Tela de transição
             limpar_tela()
             print("\n" + "═"*45)
             print(f" ✨ Celeridade Arcana: Adicionado {nome_escolhido}!")
@@ -168,7 +164,6 @@ class CaldeiraJogo:
             print("═"*45)
             time.sleep(1.8)
 
-            # Validação de derrota
             if self.peso_atual > self.peso_alvo:
                 limpar_tela()
                 print("\n" + "💥"*20)
@@ -176,12 +171,10 @@ class CaldeiraJogo:
                 print(f" O peso total atingiu {self.peso_atual}kg, passando do limite de {self.peso_alvo}kg.")
                 print("💥"*20)
                 
-                # Exibe o comparativo mesmo na derrota
                 self.exibir_comparativo_final(solucao_perfeita, pesos_ideais)
                 input("\nPressione Enter para voltar ao menu principal...")
                 break
 
-            # Validação de vitória
             if self.peso_atual == self.peso_alvo:
                 limpar_tela()
                 rank = self.calcular_rank(solucao_perfeita)
@@ -190,7 +183,6 @@ class CaldeiraJogo:
                 print(f"  RANK OBTIDO: {rank}")
                 print("═"*50)
                 
-                # Exibe o comparativo detalhado na vitória
                 self.exibir_comparativo_final(solucao_perfeita, pesos_ideais)
                 input("\nPressione Enter para retornar gloriosamente ao menu...")
                 break

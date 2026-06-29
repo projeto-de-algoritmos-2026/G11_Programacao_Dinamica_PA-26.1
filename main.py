@@ -3,12 +3,11 @@ import sys
 import time
 from core.game import CaldeiraJogo, limpar_tela
 
-# Função utilitária interplataforma para ler teclas pressionadas (Setas e Enter)
 def ler_tecla():
     if os.name == 'nt':
         import msvcrt
         ch = msvcrt.getch()
-        if ch in (b'\x00', b'\xe0'):  # Tecla especial (setas)
+        if ch in (b'\x00', b'\xe0'):
             ch = msvcrt.getch()
             if ch == b'H': return 'cima'
             if ch == b'P': return 'baixo'
@@ -32,7 +31,6 @@ def ler_tecla():
 
 def exibir_menu_principal(opcao_selecionada):
     limpar_tela()
-    # Arte ASCII enviada pelo usuário
     ascii_art = """
  ███  █      ███  █   █ ███ █   █ ███  ████ █████  ███     ████  █████ ████  █████ █████ ███ █████  ███  
 █   █ █     █   █ █   █  █  ██ ██  █  █       █   █   █     █   █ █     █   █ █     █      █   █   █   █ 
@@ -66,11 +64,9 @@ def main():
             opcao_atual = 1
         elif tecla == 'enter':
             if opcao_atual == 0:
-                # Inicia o jogo
                 jogo = CaldeiraJogo()
                 jogo.jogar()
             else:
-                # Sai do jogo
                 limpar_tela()
                 print("\n Fechando grimório... Até a próxima, mestre alquimista!")
                 time.sleep(1)
